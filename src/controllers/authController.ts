@@ -199,12 +199,12 @@ export const forgotPassword = catchAsync(async (req, res, next) => {
   await user.save({ validateBeforeSave: false });
 
   const resetUrl = `${req.protocol}://${req.get('host')}/api/v1/users/resetPassword/${resetToken}`;
-  const message = `Forgot your password? Submit a PATCH request with your new password and passwordConfirm to: ${resetUrl}.\nIf you didn't forget your password, please ignore this email!`;
+  const message = `Esqueceu sua senha? Acesse: ${resetUrl}.\nSe você não esqueceu sua senha, por favor, ignore este email!`;
 
   try {
     await sendEmail(
       email,
-      'Your password reset token (valid for 30 min)',
+      'Recuperção de Senha (válido por 30 minutos)',
       message,
     );
 
